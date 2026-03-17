@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ========================= -->
+  <!-- Sección: Título del proyecto -->
+  <!-- Objetivo: nombre visible en la pestaña -->
+  <!-- ========================= -->
+  <title>Clima TV Premium</title>
+
+  <!-- ========================= -->
+  <!-- Sección: Hoja de estilos -->
+  <!-- Objetivo: conectar el diseño principal -->
+  <!-- ========================= -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================= -->
+  <!-- Sección: Fondo climático animado -->
+  <!-- Objetivo: dar una vibra de canal del tiempo -->
+  <!-- Aquí puedes cambiar: sol, nubes, viento, colores -->
+  <!-- ========================= -->
+  <div class="sky">
+    <div class="sun"></div>
+
+    <div class="cloud cloud1">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="cloud cloud2">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="cloud cloud3">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="wind wind1"></div>
+    <div class="wind wind2"></div>
+    <div class="wind wind3"></div>
+  </div>
+
+  <!-- ========================= -->
+  <!-- Sección: Contenedor principal -->
+  <!-- Objetivo: agrupar header, buscador, resultado y ticker -->
+  <!-- ========================= -->
+  <main class="weather-tv">
+
+    <!-- ========================= -->
+    <!-- Sección: Encabezado / Hero -->
+    <!-- Objetivo: presentar la app -->
+    <!-- Aquí puedes cambiar: título, subtítulo y estilo -->
+    <!-- ========================= -->
+    <section class="top-bar">
+      <p class="channel-tag">EN VIVO • REPORTE DEL TIEMPO</p>
+      <h1>🌤️ Clima TV</h1>
+      <p class="subtitle">Consulta el clima actual y mira un carrusel global en tiempo real</p>
+    </section>
+
+    <!-- ========================= -->
+    <!-- Sección: Buscador principal -->
+    <!-- Objetivo: permitir buscar una ciudad -->
+    <!-- Aquí puedes cambiar: placeholder, texto del botón -->
+    <!-- ========================= -->
+    <section class="search-panel">
+      <form id="weather-form">
+        <input
+          type="text"
+          id="city"
+          placeholder="Ejemplo: Santiago, Chile"
+          required
+        >
+        <button type="submit">Buscar clima</button>
+      </form>
+    </section>
+
+    <!-- ========================= -->
+    <!-- Sección: Resultado principal -->
+    <!-- Objetivo: mostrar el clima de la ciudad buscada -->
+    <!-- Se llena dinámicamente con JavaScript -->
+    <!-- ========================= -->
+    <section id="result" class="result-panel"></section>
+
+    <!-- ========================= -->
+    <!-- Sección: Ticker global -->
+    <!-- Objetivo: mostrar varias ciudades con temperatura y hora -->
+    <!-- Se llena dinámicamente con JavaScript -->
+    <!-- ========================= -->
+    <section class="bottom-ticker">
+      <div class="ticker-track" id="ticker">
+        <span>🌍 Cargando ciudades del mundo...</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================= -->
+  <!-- Sección: Script principal -->
+  <!-- Objetivo: activar la lógica de la app -->
+  <!-- ========================= -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

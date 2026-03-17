@@ -1,0 +1,461 @@
+/* ========================= */
+/* Reset básico */
+/* Objetivo: partir con una base limpia */
+/* ========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========================= */
+/* Fondo general */
+/* Objetivo: dar una base tipo cielo TV */
+/* Aquí puedes cambiar: colores del cielo */
+/* ========================= */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(180deg, #66b7e8 0%, #8fd2f5 35%, #cfefff 70%, #f6f0cf 100%);
+  color: #ffffff;
+}
+
+/* ========================= */
+/* Fondo animado */
+/* Objetivo: contener sol, nubes y viento */
+/* ========================= */
+.sky {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* ========================= */
+/* Sol */
+/* Objetivo: dar calidez y profundidad visual */
+/* Aquí puedes cambiar: tamaño, posición, color */
+/* ========================= */
+.sun {
+  position: absolute;
+  top: 48px;
+  right: 90px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff8b5 0%, #ffd75a 48%, rgba(255, 215, 90, 0.32) 72%, transparent 100%);
+  animation: sunPulse 6s ease-in-out infinite;
+}
+
+/* ========================= */
+/* Nubes */
+/* Objetivo: crear nubes con forma real usando círculos */
+/* Aquí puedes cambiar: cantidad, tamaño, velocidad */
+/* ========================= */
+.cloud {
+  position: absolute;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 999px;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+.cloud span {
+  position: absolute;
+  display: block;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 50%;
+}
+
+.cloud1 {
+  width: 220px;
+  top: 90px;
+  left: -260px;
+  animation: moveCloud 28s linear infinite;
+}
+.cloud1 span:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  left: 22px;
+  top: -30px;
+}
+.cloud1 span:nth-child(2) {
+  width: 95px;
+  height: 95px;
+  left: 72px;
+  top: -42px;
+}
+.cloud1 span:nth-child(3) {
+  width: 75px;
+  height: 75px;
+  right: 24px;
+  top: -22px;
+}
+
+.cloud2 {
+  width: 270px;
+  top: 230px;
+  left: -320px;
+  opacity: 0.9;
+  animation: moveCloud 36s linear infinite;
+  animation-delay: 4s;
+}
+.cloud2 span:nth-child(1) {
+  width: 92px;
+  height: 92px;
+  left: 28px;
+  top: -30px;
+}
+.cloud2 span:nth-child(2) {
+  width: 108px;
+  height: 108px;
+  left: 88px;
+  top: -48px;
+}
+.cloud2 span:nth-child(3) {
+  width: 82px;
+  height: 82px;
+  right: 28px;
+  top: -24px;
+}
+
+.cloud3 {
+  width: 190px;
+  top: 380px;
+  left: -230px;
+  opacity: 0.78;
+  animation: moveCloud 31s linear infinite;
+  animation-delay: 11s;
+}
+.cloud3 span:nth-child(1) {
+  width: 68px;
+  height: 68px;
+  left: 16px;
+  top: -22px;
+}
+.cloud3 span:nth-child(2) {
+  width: 86px;
+  height: 86px;
+  left: 58px;
+  top: -36px;
+}
+.cloud3 span:nth-child(3) {
+  width: 64px;
+  height: 64px;
+  right: 16px;
+  top: -16px;
+}
+
+/* ========================= */
+/* Viento */
+/* Objetivo: agregar sensación de movimiento meteorológico */
+/* Aquí puedes cambiar: velocidad, opacidad, cantidad */
+/* ========================= */
+.wind {
+  position: absolute;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+  opacity: 0.78;
+}
+
+.wind1 {
+  width: 220px;
+  top: 540px;
+  left: -250px;
+  animation: moveWind 10s linear infinite;
+}
+.wind2 {
+  width: 170px;
+  top: 590px;
+  left: -210px;
+  animation: moveWind 8s linear infinite;
+  animation-delay: 2s;
+}
+.wind3 {
+  width: 260px;
+  top: 660px;
+  left: -290px;
+  animation: moveWind 12s linear infinite;
+  animation-delay: 5s;
+}
+
+/* ========================= */
+/* Panel principal */
+/* Objetivo: contener la app con presencia visual */
+/* Aquí puedes cambiar: ancho, padding, transparencia */
+/* ========================= */
+.weather-tv {
+  position: relative;
+  z-index: 2;
+  width: min(92%, 860px);
+  margin: 28px auto;
+  padding: 30px;
+  border-radius: 30px;
+  background: rgba(10, 28, 58, 0.22);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+}
+
+/* ========================= */
+/* Encabezado */
+/* Objetivo: dar identidad tipo canal del tiempo */
+/* ========================= */
+.top-bar {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.channel-tag {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 82, 82, 0.92);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.top-bar h1 {
+  font-size: 2.8rem;
+  margin-bottom: 8px;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.14);
+}
+
+.subtitle {
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+/* ========================= */
+/* Buscador */
+/* Objetivo: mantener un input grande y pro */
+/* Aquí puedes cambiar: ancho relativo, colores, radios */
+/* ========================= */
+.search-panel {
+  margin-bottom: 24px;
+}
+
+#weather-form {
+  display: grid;
+  grid-template-columns: 1fr 210px;
+  gap: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 18px 20px;
+  border: none;
+  border-radius: 18px;
+  outline: none;
+  font-size: 1.05rem;
+  background: rgba(255, 255, 255, 0.84);
+  color: #1e293b;
+}
+
+input::placeholder {
+  color: #64748b;
+}
+
+button {
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(90deg, #ffd05c, #ff9e1a);
+  color: #1f2937;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(255, 159, 28, 0.28);
+}
+
+/* ========================= */
+/* Resultado principal */
+/* Objetivo: dar protagonismo a la ciudad buscada */
+/* ========================= */
+.result-panel {
+  min-height: 250px;
+}
+
+.weather-card {
+  padding: 30px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(10px);
+  animation: fadeUp 0.45s ease;
+  text-align: center;
+}
+
+.weather-city {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.weather-icon {
+  font-size: 4.2rem;
+  margin-bottom: 10px;
+}
+
+.weather-temp {
+  font-size: 5.2rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 18px;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.weather-extra {
+  font-size: 1.12rem;
+  opacity: 0.96;
+  margin-bottom: 8px;
+}
+
+.weather-status {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.loading-text {
+  font-size: 1.18rem;
+  font-weight: 700;
+}
+
+.error-text {
+  color: #ff6b6b;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* ========================= */
+/* Ticker global */
+/* Objetivo: mostrar varias ciudades del mundo en movimiento */
+/* Aquí puedes cambiar: altura, velocidad y estilo */
+/* ========================= */
+.bottom-ticker {
+  margin-top: 24px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 34px;
+  padding: 14px 22px;
+  animation: tickerMove 28s linear infinite;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.97;
+}
+
+/* ========================= */
+/* Animaciones */
+/* Objetivo: dar vida al fondo y al ticker */
+/* ========================= */
+@keyframes moveCloud {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(150vw);
+  }
+}
+
+@keyframes moveWind {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(150vw);
+    opacity: 0;
+  }
+}
+
+@keyframes sunPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tickerMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ========================= */
+/* Responsive */
+/* Objetivo: mantener buena lectura en pantallas pequeñas */
+/* ========================= */
+@media (max-width: 700px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .weather-tv {
+    width: 94%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .top-bar h1 {
+    font-size: 2rem;
+  }
+
+  #weather-form {
+    grid-template-columns: 1fr;
+  }
+
+  .weather-temp {
+    font-size: 4.1rem;
+  }
+
+  .sun {
+    width: 130px;
+    height: 130px;
+    top: 36px;
+    right: 36px;
+  }
+}
